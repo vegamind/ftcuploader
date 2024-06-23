@@ -83,6 +83,10 @@ public class FTCUploader implements Plugin<Project> {
 					if(error != null) {
 						throw new GradleException("Build FAILED! \n" + error);
 					}
+
+					// Make sure warning is visible
+					System.err.println("This plugin is meant for development and prototyping; do not use it to upload code for actual competition!");
+					System.err.println("Before the competition make sure you are running code compiled in Android Studio!");
 				});
 	}
 }
