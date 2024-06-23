@@ -1,9 +1,10 @@
 plugins {
     id 'java'
     id 'com.github.johnrengelman.shadow' version '7.1.2'
+    id 'com.gradle.plugin-publish' version '1.2.1'
 }
 
-group = 'si.vegvamind'
+group = 'si.vegamind'
 version = '1.0'
 
 repositories {
@@ -19,5 +20,20 @@ dependencies {
 }
 
 shadowJar {
-    archiveClassifier.set('all')
+    archiveClassifier.set('')
+}
+
+gradlePlugin {
+    website = 'https://github.com/vegamind-22903/ftcuploader'
+    vcsUrl = 'https://github.com/vegamind-22903/ftcuploader.git'
+
+    plugins {
+        ftcuploader {
+            id = 'si.vegamind.ftcuploader'
+            displayName = 'FTC Uploader'
+            description = 'A custom code uploader Gradle plugin'
+            tags.set(['ftc', 'fgc'])
+            implementationClass = 'si.vegamind.ftcuploader.FTCUploader'
+        }
+    }
 }

@@ -1,9 +1,9 @@
-package si.vegvamind.ftcuploader.utils;
+package si.vegamind.ftcuploader.utils;
 
 import okhttp3.*;
 import org.gradle.api.logging.Logger;
 import org.gradle.api.logging.Logging;
-import si.vegvamind.ftcuploader.FTCUploader;
+import si.vegamind.ftcuploader.FTCUploader;
 
 import java.io.IOException;
 import java.nio.file.Files;

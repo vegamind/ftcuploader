@@ -1,4 +1,4 @@
-package si.vegvamind.ftcuploader;
+package si.vegamind.ftcuploader;
 
 public class UploaderConfig {
 	private String robotIp;

@@ -1,4 +1,4 @@
-package si.vegvamind.ftcuploader;
+package si.vegamind.ftcuploader;
 
 import com.neovisionaries.ws.client.*;
 import org.gradle.api.GradleException;
@@ -8,7 +8,7 @@ import org.gradle.api.Task;
 import org.gradle.api.logging.Logger;
 import org.gradle.api.logging.Logging;
 import org.json.JSONObject;
-import si.vegvamind.ftcuploader.utils.NetworkUtils;
+import si.vegamind.ftcuploader.utils.NetworkUtils;
 
 import java.io.IOException;
 import java.nio.file.Files;
