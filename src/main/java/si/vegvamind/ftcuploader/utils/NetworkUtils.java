@@ -1,15 +1,17 @@
 package si.vegvamind.ftcuploader.utils;
 
-import okhttp3.MultipartBody;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
+import okhttp3.*;
+import org.gradle.api.logging.Logger;
+import org.gradle.api.logging.Logging;
+import si.vegvamind.ftcuploader.FTCUploader;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
 public class NetworkUtils {
+	private static final Logger LOG = Logging.getLogger(FTCUploader.class);
+
 	private NetworkUtils() {
 	}
 
@@ -45,7 +47,34 @@ public class NetworkUtils {
 					.build();
 
 			client.newCall(request).execute().close();
-			System.out.println("Uploaded " + filePath.getFileName());
+			LOG.info("Uploaded {}", filePath.getFileName());
+		} catch(IOException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	/**
+	 * Method gets the last build error message
+	 *
+	 * @param robotIp Robot ip
+	 * @return <br>
+	 * {@code null} if build was successful <br>
+	 * {@code ""} or {@code error message} if build failed
+	 */
+	public static String getErrorMessage(String robotIp) {
+		OkHttpClient client = new OkHttpClient().newBuilder().build();
+		Request request = new Request.Builder()
+				.url("http://" + robotIp + ":8080/java/build/wait")
+				.get()
+				.build();
+
+		try(Response res = client.newCall(request).execute()) {
+			if(res.body() != null) {
+				String body = res.body().string();
+				return body.isEmpty() ? null : body;
+			} else {
+				return "";
+			}
 		} catch(IOException e) {
 			throw new RuntimeException(e);
 		}
