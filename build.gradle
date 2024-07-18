@@ -24,8 +24,8 @@ shadowJar {
 }
 
 gradlePlugin {
-    website = 'https://github.com/vegamind-22903/ftcuploader'
-    vcsUrl = 'https://github.com/vegamind-22903/ftcuploader.git'
+    website = 'https://github.com/vegamind/ftcuploader'
+    vcsUrl = 'https://github.com/vegamind/ftcuploader.git'
 
     plugins {
         ftcuploader {
